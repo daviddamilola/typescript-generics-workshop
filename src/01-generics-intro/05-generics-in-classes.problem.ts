@@ -1,14 +1,18 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-export class Component {
-  private props: unknown;
 
-  constructor(props: unknown) {
+interface IProps {
+  a: number; b: number; c: number
+}
+export class Component<TProps> {
+  private props: TProps;
+
+  constructor(props: TProps) {
     this.props = props;
   }
 
-  getProps = () => this.props;
+  getProps = () :TProps => this.props;
 }
 
 it("Should create an object containing props", () => {
